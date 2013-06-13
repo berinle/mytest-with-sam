@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>sam-test</groupId>
+  <artifactId>sam-test</artifactId>
+  <version>1.0</version>
+  <inceptionYear>2013</inceptionYear>
+
+  <build>
+  	<defaultGoal>package</defaultGoal>
+  	<resources>
+		<resource>
+			<directory>src/main/resources</directory>
+			<filtering>true</filtering>
+		</resource>
+	</resources>
+	<plugins>
+		<plugin>
+			<groupId>org.mortbay.jetty</groupId>
+			<artifactId>jetty-maven-plugin</artifactId>
+			<version>8.0.1.v20110908</version>
+			<configuration>
+				<scanIntervalSeconds>10</scanIntervalSeconds>
+				<reload>manual</reload>
+				<webAppConfig>
+					<contextPath>/sam-test</contextPath>
+					<descriptor>${basedir}/src/main/webapp/WEB-INF/web.xml</descriptor>
+				</webAppConfig>
+				<connectors>
+					<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+						<port>8080</port>
+						<maxIdleTime>360000</maxIdleTime>
+					</connector>
+				</connectors>
+			</configuration>
+		</plugin>
+    </plugins>
+  </build>
+</project>
