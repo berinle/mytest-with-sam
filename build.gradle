@@ -2,3 +2,6 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
